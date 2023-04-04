@@ -1,6 +1,6 @@
 package com.example.myhotels.domain.model
 
-data class BookItem(
+data class HotelList(
     val id: Int,
     val name: String,
     val address: String,
