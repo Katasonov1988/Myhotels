@@ -2,7 +2,7 @@ package com.example.myhotels.data.network.model
 
 import com.google.gson.annotations.SerializedName
 
-data class HotelItemListData(
+data class HotelListData(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("address") val address: String,
