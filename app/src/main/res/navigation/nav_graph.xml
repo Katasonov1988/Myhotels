@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/hotelDetailFragment"
-        android:name="com.example.myhotels.ui.HotelDetailFragment"
+        android:name="com.example.myhotels.ui.hotelDetailScreen.HotelDetailFragment"
         android:label="fragment_hotel_detail"
         tools:layout="@layout/fragment_hotel_detail" >
         <argument

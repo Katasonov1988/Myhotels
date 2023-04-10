@@ -14,6 +14,16 @@
         android:padding="8dp"
         >
 
+        <View
+            android:id="@+id/top_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="#31000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/first_star" />
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/first_star"
             android:layout_width="wrap_content"
@@ -24,17 +34,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hotel_name"
             />
-
-        <View
-            android:id="@+id/line_star_botton"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="4dp"
-            android:background="#31000000"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/first_star" />
-
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/second_star"
@@ -91,7 +90,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/hotel_address"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line_star_botton"
+            app:layout_constraintTop_toBottomOf="@+id/top_line"
             tools:text="Best Western President Hotel at Times Square" />
 
         <TextView
@@ -100,7 +99,6 @@
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:gravity="bottom"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/hotel_name"
             app:layout_constraintBottom_toTopOf="@+id/distance_from_center"
@@ -114,7 +112,6 @@
             android:layout_height="wrap_content"
             android:gravity="bottom"
             android:maxLines="1"
-            android:textColor="@color/black"
             app:drawableStartCompat="@drawable/ic_walk_16"
             android:drawablePadding="8dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +123,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:maxLines="3"
-            android:textColor="@color/black"
             app:drawableStartCompat="@drawable/ic_hotel_room__16"
             android:drawablePadding="8dp"
             app:layout_constraintStart_toStartOf="parent"

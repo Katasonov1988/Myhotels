@@ -1,4 +1,4 @@
-package com.example.myhotels.ui
+package com.example.myhotels.ui.hotelDetailScreen
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
