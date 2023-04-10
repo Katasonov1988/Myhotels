@@ -1,11 +1,11 @@
 package com.example.myhotels.domain.model
 
-data class HotelList(
+data class HotelEntity(
     val id: Int,
     val name: String,
     val address: String,
-    val stars: Double,
-    val distance: Double,
+    val stars: Int,
+    val distance: String,
     val suitesAvailability: String
 )
 

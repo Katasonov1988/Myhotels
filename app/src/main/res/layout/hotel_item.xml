@@ -1,0 +1,138 @@
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="1dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        >
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/first_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_gold_star"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hotel_name"
+            />
+
+        <View
+            android:id="@+id/line_star_botton"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="4dp"
+            android:background="#31000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/first_star" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/second_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_gold_star"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/first_star"
+            app:layout_constraintTop_toBottomOf="@+id/hotel_name"
+            />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/third_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_gold_star"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/second_star"
+            app:layout_constraintTop_toBottomOf="@+id/hotel_name"
+            />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fourth_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_gold_star"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/third_star"
+            app:layout_constraintTop_toBottomOf="@+id/hotel_name"
+            />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/fifth_star"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_gold_star"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fourth_star"
+            app:layout_constraintTop_toBottomOf="@+id/hotel_name"
+            />
+
+        <TextView
+            android:id="@+id/hotel_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:paddingStart="2dp"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/hotel_address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line_star_botton"
+            tools:text="Best Western President Hotel at Times Square" />
+
+        <TextView
+            android:id="@+id/hotel_address"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:gravity="bottom"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/hotel_name"
+            app:layout_constraintBottom_toTopOf="@+id/distance_from_center"
+            app:drawableStartCompat="@drawable/ic_place_24"
+            android:drawablePadding="8dp"
+            tools:text="210 W. 55 STREET, NEW YORK NY 10019, UNITED STATES" />
+
+        <TextView
+            android:id="@+id/distance_from_center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            app:drawableStartCompat="@drawable/ic_walk_16"
+            android:drawablePadding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hotel_address"
+            tools:text="2.3 км от центра" />
+
+        <TextView
+            android:id="@+id/suites_availability"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:textColor="@color/black"
+            app:drawableStartCompat="@drawable/ic_hotel_room__16"
+            android:drawablePadding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/distance_from_center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:text="кол-во свободных номеров - 3" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

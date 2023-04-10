@@ -1,5 +1,9 @@
 <resources>
-    <string name="app_name">My hotels</string>
+    <string name="app_name">Найди свой отель</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="picture_of_hotel">изображение отеля</string>
+    <string name="distance_from_center">%s м от центра</string>
+    <string name="count_of_free_rooms">кол-во свободных номеров - %s </string>
+    <string name="enter_city">Введите_город</string>
 </resources>

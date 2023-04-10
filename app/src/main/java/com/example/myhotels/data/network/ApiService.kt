@@ -1,7 +1,8 @@
 package com.example.myhotels.data.network
 
 import com.example.myhotels.data.network.model.HotelDetailItemData
-import com.example.myhotels.data.network.model.HotelListData
+import com.example.myhotels.data.network.model.HotelData
+import com.example.myhotels.data.network.model.HotelInfoJsonContainerData
 import retrofit2.http.GET
 import retrofit2.http.Path
 
@@ -26,11 +27,11 @@ interface ApiService {
     @GET("ios-android-test/master/{keyOfListHotel}.json")
     suspend fun getFullHotelList(
         @Path(KEY_PARAM) keyOfListHotel: String = KEY
-    ): HotelListData
+    ): HotelInfoJsonContainerData
 
 
     @GET("ios-android-test/master/{hotelId}.json")
     suspend fun getDetailHotelItem(
-        @Path(HOTEL_ID) hotelId: String
+        @Path(HOTEL_ID) hotelId: Int
     ): HotelDetailItemData
 }

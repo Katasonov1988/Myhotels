@@ -1,22 +1,26 @@
 package com.example.myhotels.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
+import com.example.myhotels.data.mapper.toHotelDetailItem
+import com.example.myhotels.data.network.ApiService
 import com.example.myhotels.domain.HotelsRepository
 import com.example.myhotels.domain.model.HotelDetailItem
-import com.example.myhotels.domain.model.HotelList
+import com.example.myhotels.domain.model.HotelEntity
 
-class HotelsRepositoryImpl(): HotelsRepository {
-    override fun getHotelList(): LiveData<List<HotelList>> {
+class HotelsRepositoryImpl(private val apiService: ApiService): HotelsRepository {
+    override fun getHotelList(): LiveData<List<HotelEntity>> {
         TODO("Not yet implemented")
     }
 
     override suspend fun getDetailHotelItem(id: Int): HotelDetailItem {
-        TODO("Not yet implemented")
+        Log.d("Load_data","REPO_CALLED" + apiService.getDetailHotelItem(id).toHotelDetailItem().toString())
+        return apiService.getDetailHotelItem(id).toHotelDetailItem()
     }
 
-    override suspend fun loadData() {
-       while (true) {
+    override suspend fun loadHoteslData(query: String): LiveData<List<HotelEntity>> {
+        val hotelsData = apiService.getFullHotelList(query)
 
-       }
     }
+
 }
