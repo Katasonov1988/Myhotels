@@ -1,9 +1,8 @@
 package com.example.myhotels.data.mapper
 
 import com.example.myhotels.R
-import com.example.myhotels.data.network.model.HotelDetailItemData
 import com.example.myhotels.data.network.model.HotelData
-import com.example.myhotels.data.network.model.HotelInfoJsonContainerData
+import com.example.myhotels.data.network.model.HotelDetailItemData
 import com.example.myhotels.domain.model.HotelDetailItem
 import com.example.myhotels.domain.model.HotelEntity
 import java.util.*
@@ -35,11 +34,14 @@ internal fun HotelDetailItemData.toHotelDetailItem(): HotelDetailItem {
     )
 }
 
-class JsonHotelMapper {
-    fun mapJsonContainerToListHotelData(jsonContainer: HotelInfoJsonContainerData): List<HotelData> {
-        val result = mutableListOf<HotelData>()
-        val jsonObject = jsonContainer.json ?: return result
-        val
-    }
+class HotelMapper {
+    fun mapHotelDataToHotelEntity(hotelData:HotelData) = HotelEntity(
+        id = hotelData.id,
+        name = hotelData.name,
+        address = hotelData.address.lowercase(),
+        stars = hotelData.stars.toInt(),
+        distance = buildString { R.string.count_of_free_rooms;hotelData.distance },
+        suitesAvailability = hotelData.suitesAvailability.split(COLON).size.toString()
+    )
 
 }

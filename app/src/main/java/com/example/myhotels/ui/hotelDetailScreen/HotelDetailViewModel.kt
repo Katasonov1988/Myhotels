@@ -27,7 +27,6 @@ class HotelDetailViewModel(
                 Log.d("HotelItemInfo", "IOException response $e")
             } catch (e: HttpException) {
                 Log.d("HotelItemInfo", "HttpException response $e")
-
             }
         }
     }

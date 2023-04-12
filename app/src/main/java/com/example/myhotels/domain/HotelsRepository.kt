@@ -10,7 +10,7 @@ interface HotelsRepository {
 
     suspend fun getDetailHotelItem(id: Int): HotelDetailItem
 
-    suspend fun loadHoteslData(query:String):LiveData<List<HotelEntity>>
+    suspend fun loadHotelsData(query:String)
 
 
 
