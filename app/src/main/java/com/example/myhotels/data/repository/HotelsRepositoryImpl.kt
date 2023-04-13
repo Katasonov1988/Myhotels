@@ -11,26 +11,30 @@ import com.example.myhotels.domain.model.HotelEntity
 
 class HotelsRepositoryImpl(private val apiService: ApiService) : HotelsRepository {
     private val mapper = HotelMapper()
-    private val hotelsDataFromNetwork = MutableLiveData<List<HotelData>>()
 
 
-    override fun getHotelList(): LiveData<List<HotelEntity>> {
-        return MediatorLiveData<List<HotelEntity>>().apply {
-            addSource(hotelsDataFromNetwork) {
-                it.map {
-                    mapper.mapHotelDataToHotelEntity(it)
-                }
-            }
-        }
-    }
+//    private fun getHotelList(): LiveData<List<HotelEntity>> {
+//        return MediatorLiveData<List<HotelEntity>>().apply {
+//            addSource(hotelsDataFromNetwork) {
+//                it.map {
+//                    mapper.mapHotelDataToHotelEntity(it)
+//                }
+//            }
+//        }
+//    }
 
     override suspend fun getDetailHotelItem(id: Int): HotelDetailItem {
         return apiService.getDetailHotelItem(id).toHotelDetailItem()
     }
 
-    override suspend fun loadHotelsData(query: String) {
-        hotelsDataFromNetwork.value = apiService.getFullHotelList(query)
-
+    override suspend fun loadHotelsDataFromNetwork(query: String): List<HotelEntity> {
+        var hotelsDataFromNetwork: List<HotelData> = listOf()
+        try {
+            hotelsDataFromNetwork = apiService.getFullHotelList(query)
+        } catch (_: Exception) {
+        }
+        return hotelsDataFromNetwork.map {
+            mapper.mapHotelDataToHotelEntity(it)
+        }
     }
-
 }

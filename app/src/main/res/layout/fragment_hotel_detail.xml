@@ -150,7 +150,7 @@
         app:layout_constraintTop_toBottomOf="@id/distance_from_center" />
 
     <TextView
-        android:id="@+id/suites_availability"
+        android:id="@+id/hotel_suites_availability"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -168,7 +168,7 @@
         android:background="#31000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/suites_availability" />
+        app:layout_constraintTop_toBottomOf="@id/hotel_suites_availability" />
 
     <TextView
         android:id="@+id/show_location"

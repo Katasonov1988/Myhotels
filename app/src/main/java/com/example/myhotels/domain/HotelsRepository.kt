@@ -6,11 +6,9 @@ import com.example.myhotels.domain.model.HotelEntity
 
 interface HotelsRepository {
 
-    fun getHotelList(): LiveData<List<HotelEntity>>
-
     suspend fun getDetailHotelItem(id: Int): HotelDetailItem
 
-    suspend fun loadHotelsData(query:String)
+    suspend fun loadHotelsDataFromNetwork (query:String): List<HotelEntity>
 
 
 
