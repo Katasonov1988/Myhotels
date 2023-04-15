@@ -25,4 +25,8 @@ class HotelViewModel(
 
     }
 
+    fun resetOrder(){
+        _hotels.value = null
+    }
+
 }

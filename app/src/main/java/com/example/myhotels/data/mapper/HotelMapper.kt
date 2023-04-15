@@ -8,6 +8,7 @@ import com.example.myhotels.domain.model.HotelEntity
 import java.util.*
 
 private const val COLON = ":"
+private const val BASE_IMAGE_URL = "https://github.com/iMofas/ios-android-test/raw/master/"
 internal fun com.example.myhotels.data.network.model.HotelData.toHotelEntity(): HotelEntity {
     return HotelEntity(
         id = id,
@@ -26,9 +27,9 @@ internal fun HotelDetailItemData.toHotelDetailItem(): HotelDetailItem {
         address = address.lowercase()
             .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
         stars = stars.toInt(),
-        distance = distance,
+        distance = distance.toString(),
         suitesAvailability = suitesAvailability.split(COLON).size.toString(),
-        image = image,
+        image = BASE_IMAGE_URL + image,
         lat = lat,
         lon = lon
     )

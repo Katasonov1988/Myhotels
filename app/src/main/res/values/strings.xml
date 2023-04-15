@@ -5,6 +5,10 @@
     <string name="picture_of_hotel">изображение отеля</string>
     <string name="distance_from_center">%s м от центра</string>
     <string name="count_of_free_rooms">кол-во свободных номеров - %s </string>
-    <string name="enter_city">Введите_город</string>
+    <string name="search_clue">Введите_город</string>
     <string name="book_cover">Изображение отеля</string>
+    <string name="required_order">Доступен только ввод "0777"</string>
+    <string name="enter_request">Ничего не введено</string>
+    <string name="sortingOfHotels">Фильтр по отелям</string>
+    <string name="find_you_hotel">Найди свой отель</string>
 </resources>

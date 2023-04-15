@@ -5,7 +5,7 @@ data class HotelDetailItem(
     val name: String,
     val address: String,
     val stars: Int,
-    val distance: Double,
+    val distance: String,
     val suitesAvailability: String,
     val image: String,
     val lat: Double,

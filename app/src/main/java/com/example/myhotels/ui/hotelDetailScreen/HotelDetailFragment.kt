@@ -10,12 +10,14 @@ import com.example.myhotels.Injection
 import com.example.myhotels.R
 import com.example.myhotels.databinding.FragmentHotelDetailBinding
 import com.example.myhotels.databinding.FragmentHotelListBinding
+import com.example.myhotels.domain.model.HotelDetailItem
 import com.example.myhotels.ui.hotelsScreen.HotelViewModel
+import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val HOTEL_ITEM_ID = "extra_hotel_item_id"
 
 /**
  * A simple [Fragment] subclass.
@@ -30,23 +32,20 @@ class HotelDetailFragment : Fragment() {
     private val binding: FragmentHotelDetailBinding
         get() = _binding ?: throw RuntimeException("FragmentHotelDetailBinding is null")
 
-//    // TODO: Rename and change types of parameters
-//    private var param1: String? = null
-//    private var param2: String? = null
-
+    //    // TODO: Rename and change types of parameters
+    private var hotelId: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
-//        }
+        arguments?.let {
+            hotelId = it.getInt(HOTEL_ITEM_ID)
+        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentHotelDetailBinding.inflate(inflater,container, false)
+    ): View {
+        _binding = FragmentHotelDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -55,7 +54,30 @@ class HotelDetailFragment : Fragment() {
 
         initViewModel()
         setDataToView()
+        initialToolbar()
+        hotelId?.let {
+            viewModel.getHotelDetailItem(it)
+        }
+
+        viewModel.hotelItem.observe(viewLifecycleOwner) {
+            with(binding) {
+                hotelName.text = it.name
+                hotelAddress.text = it.address
+                distanceFromCenter.text =
+                    resources.getString(R.string.distance_from_center, it.distance)
+                hotelSuitesAvailability.text =
+                    resources.getString(R.string.count_of_free_rooms, it.suitesAvailability)
+                Picasso.get().load(it.image).into(ivHotelCover)
+            }
+        }
     }
+
+    private fun initialToolbar() {
+        binding.secondScreenToolbar.inflateMenu(R.menu.first_screen_filter_menu)
+        binding.secondScreenToolbar.setNavigationIcon(R.drawable.ic_back_24)
+        binding.secondScreenToolbar.setTitle("Установить Заголовок")
+    }
+
 
     private fun initViewModel() {
         viewModel = ViewModelProvider(
@@ -63,7 +85,7 @@ class HotelDetailFragment : Fragment() {
         ).get(HotelDetailViewModel::class.java)
     }
 
-private fun setDataToView() {
+    private fun setDataToView() {
 //    viewModel.getBookDetaiItem(bookItemId)
 //    viewModel.bookItem.observe(this) {
 //        with(binding) {
@@ -82,28 +104,28 @@ private fun setDataToView() {
 //            }
 //        }
 //    }
-}
+    }
 
 
-//    companion object {
-//        /**
-//         * Use this factory method to create a new instance of
-//         * this fragment using the provided parameters.
-//         *
-//         * @param param1 Parameter 1.
-//         * @param param2 Parameter 2.
-//         * @return A new instance of fragment HotelDetailFragment.
-//         */
-//        // TODO: Rename and change types and number of parameters
-//        @JvmStatic
-//        fun newInstance(param1: String, param2: String) =
-//            HotelDetailFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-//                }
-//            }
-//    }
+    companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment HotelDetailFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+
+        @JvmStatic
+        fun newInstance(hotelId: Int) =
+            HotelDetailFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(HOTEL_ITEM_ID, hotelId)
+                }
+            }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()

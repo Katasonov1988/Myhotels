@@ -2,6 +2,7 @@ package com.example.myhotels.ui.hotelsScreen.list
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import com.example.myhotels.R
@@ -34,7 +35,31 @@ class HotelEntityAdapter(
                     resources.getString(R.string.count_of_free_rooms, suitesAvailability)
                 distanceFromCenter.text =
                     resources.getString(R.string.distance_from_center, distance)
-
+                when (stars) {
+                    1 -> firstStar.visibility = View.VISIBLE
+                    2 -> {
+                        firstStar.visibility = View.VISIBLE
+                        secondStar.visibility = View.VISIBLE
+                    }
+                    3 -> {
+                        firstStar.visibility = View.VISIBLE
+                        secondStar.visibility = View.VISIBLE
+                        thirdStar.visibility = View.VISIBLE
+                    }
+                    4 -> {
+                        firstStar.visibility = View.VISIBLE
+                        secondStar.visibility = View.VISIBLE
+                        thirdStar.visibility = View.VISIBLE
+                        fourthStar.visibility = View.VISIBLE
+                    }
+                    5 -> {
+                        firstStar.visibility = View.VISIBLE
+                        secondStar.visibility = View.VISIBLE
+                        thirdStar.visibility = View.VISIBLE
+                        fourthStar.visibility = View.VISIBLE
+                        fifthStar.visibility = View.VISIBLE
+                    }
+                }
 
                 root.setOnClickListener {
                     onHotelClickListener?.onHotelClick(this)
