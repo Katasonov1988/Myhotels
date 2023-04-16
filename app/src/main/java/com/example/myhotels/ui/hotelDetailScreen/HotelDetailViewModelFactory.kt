@@ -7,14 +7,14 @@ import com.example.myhotels.data.repository.HotelsRepositoryImpl
 
 class HotelDetailViewModelFactory(
     private val repository: HotelsRepositoryImpl
-):ViewModelProvider.Factory {
+) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(
         modelClass: Class<T>,
         extras: CreationExtras
     ): T {
         if (modelClass.isAssignableFrom(HotelDetailViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return HotelDetailViewModel (repository) as T
+            return HotelDetailViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }

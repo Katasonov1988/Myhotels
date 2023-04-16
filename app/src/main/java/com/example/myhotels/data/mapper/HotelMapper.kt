@@ -9,18 +9,6 @@ import java.util.*
 
 private const val COLON = ":"
 private const val BASE_IMAGE_URL = "https://github.com/iMofas/ios-android-test/raw/master/"
-private const val EMPTY_LINE = ""
-
-internal fun com.example.myhotels.data.network.model.HotelData.toHotelEntity(): HotelEntity {
-    return HotelEntity(
-        id = id,
-        name = name,
-        address = address.lowercase(),
-        stars = stars.toInt(),
-        distance = buildString { R.string.count_of_free_rooms;distance },
-        suitesAvailability = suitesAvailability.split(COLON).size.toString()
-    )
-}
 
 internal fun HotelDetailItemData.toHotelDetailItem(): HotelDetailItem {
     return HotelDetailItem(
@@ -38,13 +26,12 @@ internal fun HotelDetailItemData.toHotelDetailItem(): HotelDetailItem {
 }
 
 class HotelMapper {
-    fun mapHotelDataToHotelEntity(hotelData:HotelData) = HotelEntity(
+    fun mapHotelDataToHotelEntity(hotelData: HotelData) = HotelEntity(
         id = hotelData.id,
         name = hotelData.name,
         address = hotelData.address.lowercase(),
         stars = hotelData.stars.toInt(),
-        distance = buildString { R.string.count_of_free_rooms;hotelData.distance },
+        distance =  hotelData.distance.toString(),
         suitesAvailability = hotelData.suitesAvailability.split(COLON).size.toString()
     )
-
 }

@@ -8,8 +8,8 @@
     <fragment
         android:id="@+id/hotelListFragment"
         android:name="com.example.myhotels.ui.hotelsScreen.HotelListFragment"
-        android:label="fragment_hotel_list"
-        tools:layout="@layout/fragment_hotel_list" >
+        android:label="@string/find_you_hotel"
+        tools:layout="@layout/fragment_hotel_list">
         <action
             android:id="@+id/action_hotelListFragment_to_hotelDetailFragment"
             app:destination="@id/hotelDetailFragment" />
@@ -17,10 +17,15 @@
     <fragment
         android:id="@+id/hotelDetailFragment"
         android:name="com.example.myhotels.ui.hotelDetailScreen.HotelDetailFragment"
-        android:label="fragment_hotel_detail"
-        tools:layout="@layout/fragment_hotel_detail" >
+        android:label="@string/about_hotel"
+        tools:layout="@layout/fragment_hotel_detail">
         <argument
             android:name="hotel_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_hotelDetailFragment_to_hotelListFragment2"
+            app:destination="@id/hotelListFragment"
+            app:popUpTo="@id/hotelListFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

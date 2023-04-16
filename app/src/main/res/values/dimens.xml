@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="padding_start_first_star">8dp</dimen>
+    <dimen name="padding_iv">8dp</dimen>
+    <dimen name="padding_bottom_layout_detail_screen">8dp</dimen>
+    <dimen name="view_height">1dp</dimen>
+    <dimen name="view_margin">4dp</dimen>
+    <dimen name="drawable_padding">8dp</dimen>
+    <dimen name="layout_marginTop">4dp</dimen>
+    <dimen name="padding_start">6dp</dimen>
+    <dimen name="padding_end">6dp</dimen>
+    <dimen name="padding_start_end_hotel_name">10dp</dimen>
+    <dimen name="padding_top_hotel_name">4dp</dimen>
+    <dimen name="rv_hotel_list_margin">8dp</dimen>
+</resources>

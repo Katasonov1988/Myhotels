@@ -2,7 +2,6 @@ package com.example.myhotels.data.network
 
 import com.example.myhotels.data.network.model.HotelDetailItemData
 import com.example.myhotels.data.network.model.HotelData
-import com.example.myhotels.domain.model.HotelEntity
 import retrofit2.http.GET
 import retrofit2.http.Path
 

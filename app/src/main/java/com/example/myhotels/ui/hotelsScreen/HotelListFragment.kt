@@ -18,7 +18,8 @@ import com.example.myhotels.ui.hotelsScreen.list.HotelEntityAdapter
 import com.google.android.material.snackbar.Snackbar
 
 
-private const val QUERYFORHOTELS = "0777"
+private const val QUERY_FOR_HOTELS = "0777"
+private const val SCROLL_POSITION = 0
 
 class HotelListFragment : Fragment() {
 
@@ -42,19 +43,16 @@ class HotelListFragment : Fragment() {
         initialToolbar()
         initViewModel()
 
+
         val adapter = context?.let { HotelEntityAdapter(it) }
         adapter?.onHotelClickListener = object : HotelEntityAdapter.OnHotelClickListener {
             override fun onHotelClick(hotelInfo: HotelEntity) {
-                Snackbar.make(binding.root, "Нажата кнопка ${hotelInfo.id}", Snackbar.LENGTH_SHORT)
-                    .show()
                 launchHotelDetailActivity(hotelInfo.id)
-
             }
         }
 
         binding.recyclerView.adapter = adapter
-//        binding.recyclerView.itemAnimator = null
-        binding.etSearchHotels.setText(QUERYFORHOTELS)
+        binding.etSearchHotels.setText(QUERY_FOR_HOTELS)
 
         viewModel.hotels.observe(viewLifecycleOwner) {
             adapter?.submitList(it)
@@ -87,7 +85,7 @@ class HotelListFragment : Fragment() {
         binding.mainToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_filter_hotels -> {
-                    Snackbar.make(binding.root, "Нажата кнопка фильтра", Snackbar.LENGTH_SHORT)
+                    Snackbar.make(binding.root, R.string.pressed_button, Snackbar.LENGTH_SHORT)
                         .show()
                     true
                 }
@@ -105,8 +103,8 @@ class HotelListFragment : Fragment() {
     private fun FragmentHotelListBinding.updateHotelListFromInput() {
         binding.etSearchHotels.text.trim().let {
             if (it.isNotEmpty()) {
-                if (it.toString() == QUERYFORHOTELS) {
-                    recyclerView.scrollToPosition(0)
+                if (it.toString() == QUERY_FOR_HOTELS) {
+                    recyclerView.scrollToPosition(SCROLL_POSITION)
                     viewModel.getHotelsDataFromNetwork(it.toString())
                 } else {
                     viewModel.resetOrder()

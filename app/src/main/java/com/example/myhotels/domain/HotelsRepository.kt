@@ -1,6 +1,5 @@
 package com.example.myhotels.domain
 
-import androidx.lifecycle.LiveData
 import com.example.myhotels.domain.model.HotelDetailItem
 import com.example.myhotels.domain.model.HotelEntity
 

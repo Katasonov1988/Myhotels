@@ -35,6 +35,7 @@ class HotelEntityAdapter(
                     resources.getString(R.string.count_of_free_rooms, suitesAvailability)
                 distanceFromCenter.text =
                     resources.getString(R.string.distance_from_center, distance)
+
                 when (stars) {
                     1 -> firstStar.visibility = View.VISIBLE
                     2 -> {

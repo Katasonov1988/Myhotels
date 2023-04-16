@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="16dp"
+    android:paddingBottom="@dimen/padding_bottom_layout_detail_screen"
     tools:context=".ui.hotelDetailScreen.HotelDetailFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -21,20 +21,19 @@
         android:layout_height="wrap_content"
         android:background="@color/text_color"
         android:contentDescription="@string/book_cover"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:paddingTop="@dimen/padding_iv"
+        android:paddingBottom="@dimen/padding_iv"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/second_screen_toolbar"
         tools:srcCompat="@drawable/example_of_picture" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/first_star"
+        style="@style/StyleStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="8dp"
-        android:scaleType="center"
-        android:visibility="gone"
+        android:paddingStart="@dimen/padding_start_first_star"
         app:layout_constraintBottom_toTopOf="@+id/hotel_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_hotel_cover"
@@ -43,10 +42,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/second_star"
+        style="@style/StyleStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/first_star"
         app:layout_constraintStart_toEndOf="@+id/first_star"
         app:layout_constraintTop_toTopOf="@+id/first_star"
@@ -56,8 +54,6 @@
         android:id="@+id/third_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/first_star"
         app:layout_constraintStart_toEndOf="@+id/second_star"
         app:layout_constraintTop_toTopOf="@+id/first_star"
@@ -65,10 +61,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fourth_star"
+        style="@style/StyleStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/first_star"
         app:layout_constraintStart_toEndOf="@+id/third_star"
         app:layout_constraintTop_toTopOf="@+id/first_star"
@@ -76,10 +71,9 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fifth_star"
+        style="@style/StyleStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="center"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/first_star"
         app:layout_constraintStart_toEndOf="@+id/fourth_star"
         app:layout_constraintTop_toTopOf="@+id/first_star"
@@ -91,10 +85,9 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="2"
-        android:paddingStart="10dp"
-        android:paddingTop="4dp"
-        android:paddingEnd="10dp"
-        android:paddingBottom="4dp"
+        android:paddingStart="@dimen/padding_start_end_hotel_name"
+        android:paddingTop="@dimen/padding_top_hotel_name"
+        android:paddingEnd="@dimen/padding_start_end_hotel_name"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -105,13 +98,11 @@
 
     <TextView
         android:id="@+id/hotel_address"
+        style="@style/TextView_style_hotel_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
         android:gravity="bottom"
         android:maxLines="2"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
         app:drawableStartCompat="@drawable/ic_place_24"
         app:layout_constraintBottom_toTopOf="@+id/top_line"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,22 +112,19 @@
     <View
         android:id="@+id/top_line"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="4dp"
-        android:background="#31000000"
+        android:layout_height="@dimen/view_height"
+        android:layout_margin="@dimen/view_margin"
+        android:background="@color/view_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hotel_address" />
 
     <TextView
         android:id="@+id/distance_from_center"
+        style="@style/TextView_style_hotel_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:drawablePadding="8dp"
         android:gravity="bottom"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
         app:drawableStartCompat="@drawable/ic_walk_16"
         app:layout_constraintBottom_toTopOf="@id/middle_line"
         app:layout_constraintStart_toStartOf="parent"
@@ -146,21 +134,18 @@
     <View
         android:id="@+id/middle_line"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="4dp"
-        android:background="#31000000"
+        android:layout_height="@dimen/view_height"
+        android:layout_margin="@dimen/view_margin"
+        android:background="@color/view_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/distance_from_center" />
 
     <TextView
         android:id="@+id/hotel_suites_availability"
+        style="@style/TextView_style_hotel_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:drawablePadding="8dp"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
         app:drawableStartCompat="@drawable/ic_hotel_room__16"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/middle_line"
@@ -169,21 +154,19 @@
     <View
         android:id="@+id/bottom_line"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_margin="4dp"
-        android:background="#31000000"
+        android:layout_height="@dimen/view_height"
+        android:layout_margin="@dimen/view_margin"
+        android:background="@color/view_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/hotel_suites_availability" />
 
     <TextView
         android:id="@+id/show_location"
+        style="@style/TextView_style_hotel_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:drawablePadding="8dp"
-        android:paddingStart="6dp"
-        android:paddingEnd="6dp"
+        android:text="@string/show_on_map"
         app:drawableStartCompat="@drawable/baseline_map_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottom_line"

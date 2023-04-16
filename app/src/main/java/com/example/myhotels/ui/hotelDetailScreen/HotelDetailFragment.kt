@@ -1,16 +1,15 @@
 package com.example.myhotels.ui.hotelDetailScreen
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.ui.setupWithNavController
 import com.example.myhotels.Injection
 import com.example.myhotels.R
 import com.example.myhotels.databinding.FragmentHotelDetailBinding
-import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
 
@@ -18,6 +17,7 @@ class HotelDetailFragment : Fragment() {
 
     companion object {
         const val HOTEL_ITEM_ID = "extra_hotel_item_id"
+        const val KEY_SAVED_ID = "key_saved_id"
 
         @JvmStatic
         fun newInstance(hotelId: Int) =
@@ -38,9 +38,14 @@ class HotelDetailFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            hotelId = it.getInt(HOTEL_ITEM_ID)
+        if (savedInstanceState != null) {
+            hotelId = savedInstanceState.getInt(KEY_SAVED_ID)
+        } else {
+            arguments?.let {
+                hotelId = it.getInt(HOTEL_ITEM_ID)
+            }
         }
+
     }
 
     override fun onCreateView(
@@ -55,10 +60,11 @@ class HotelDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initViewModel()
+        initialToolbar()
+
         hotelId?.let {
             viewModel.getHotelDetailItem(it)
         }
-        initialToolbar()
 
         viewModel.hotelItem.observe(viewLifecycleOwner) {
             with(binding) {
@@ -85,7 +91,6 @@ class HotelDetailFragment : Fragment() {
         binding.secondScreenToolbar.setNavigationIcon(R.drawable.ic_back_24)
         binding.secondScreenToolbar.setTitle(R.string.about_hotel)
         binding.secondScreenToolbar.setNavigationOnClickListener {
-            Snackbar.make(binding.root, "Нажата кнопка", Snackbar.LENGTH_SHORT).show()
             requireActivity().supportFragmentManager.popBackStack()
         }
     }
@@ -122,6 +127,11 @@ class HotelDetailFragment : Fragment() {
                 binding.fifthStar.visibility = View.VISIBLE
             }
         }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        hotelId?.let { outState.putInt(KEY_SAVED_ID, it) }
     }
 
     override fun onDestroyView() {
