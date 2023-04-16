@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Найди свой отель</string>
+    <string name="app_name">Найди отель</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="picture_of_hotel">изображение отеля</string>
@@ -11,4 +11,5 @@
     <string name="enter_request">Ничего не введено</string>
     <string name="sortingOfHotels">Фильтр по отелям</string>
     <string name="find_you_hotel">Найди свой отель</string>
+    <string name="about_hotel">Об отеле</string>
 </resources>

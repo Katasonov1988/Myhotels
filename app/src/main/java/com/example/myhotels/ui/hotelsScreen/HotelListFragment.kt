@@ -7,10 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.Toast
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.lifecycle.ViewModelProvider
 import com.example.myhotels.Injection
 import com.example.myhotels.R
@@ -20,36 +17,15 @@ import com.example.myhotels.ui.hotelDetailScreen.HotelDetailFragment
 import com.example.myhotels.ui.hotelsScreen.list.HotelEntityAdapter
 import com.google.android.material.snackbar.Snackbar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HotelListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 private const val QUERYFORHOTELS = "0777"
+
 class HotelListFragment : Fragment() {
 
     private lateinit var viewModel: HotelViewModel
     private var _binding: FragmentHotelListBinding? = null
     private val binding: FragmentHotelListBinding
         get() = _binding ?: throw RuntimeException("FragmentHotelListBinding is null")
-
-
-//    // TODO: Rename and change types of parameters
-//    private var param1: String? = null
-//    private var param2: String? = null
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        arguments?.let {
-//            param1 = it.getString(ARG_PARAM1)
-//            param2 = it.getString(ARG_PARAM2)
-//        }
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,7 +45,8 @@ class HotelListFragment : Fragment() {
         val adapter = context?.let { HotelEntityAdapter(it) }
         adapter?.onHotelClickListener = object : HotelEntityAdapter.OnHotelClickListener {
             override fun onHotelClick(hotelInfo: HotelEntity) {
-                Snackbar.make(binding.root, "Нажата кнопка ${hotelInfo.id}", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(binding.root, "Нажата кнопка ${hotelInfo.id}", Snackbar.LENGTH_SHORT)
+                    .show()
                 launchHotelDetailActivity(hotelInfo.id)
 
             }
@@ -83,15 +60,6 @@ class HotelListFragment : Fragment() {
             adapter?.submitList(it)
         }
 
-//        binding.etSearchHotels.setOnEditorActionListener { _, actionId, _ ->
-//            if (actionId == EditorInfo.IME_ACTION_GO) {
-//                binding.updateHotelListFromInput()
-//                true
-//            } else {
-//                false
-//            }
-//        }
-
         binding.etSearchHotels.setOnKeyListener { view, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                 binding.updateHotelListFromInput()
@@ -104,16 +72,16 @@ class HotelListFragment : Fragment() {
 
     }
 
-    private fun launchHotelDetailActivity (hotelId:Int){
+    private fun launchHotelDetailActivity(hotelId: Int) {
         requireActivity().supportFragmentManager.popBackStack()
         requireActivity().supportFragmentManager
             .beginTransaction()
-            .replace(R.id.nav_host_fragment,HotelDetailFragment.newInstance(hotelId))
+            .replace(R.id.nav_host_fragment, HotelDetailFragment.newInstance(hotelId))
             .addToBackStack(null)
             .commit()
     }
 
-    private fun initialToolbar(){
+    private fun initialToolbar() {
         binding.mainToolbar.inflateMenu(R.menu.first_screen_filter_menu)
         binding.mainToolbar.setTitle(R.string.find_you_hotel)
         binding.mainToolbar.setOnMenuItemClickListener {
@@ -134,7 +102,7 @@ class HotelListFragment : Fragment() {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    private fun FragmentHotelListBinding.updateHotelListFromInput(){
+    private fun FragmentHotelListBinding.updateHotelListFromInput() {
         binding.etSearchHotels.text.trim().let {
             if (it.isNotEmpty()) {
                 if (it.toString() == QUERYFORHOTELS) {
@@ -142,7 +110,8 @@ class HotelListFragment : Fragment() {
                     viewModel.getHotelsDataFromNetwork(it.toString())
                 } else {
                     viewModel.resetOrder()
-                    Snackbar.make(binding.root, R.string.required_order, Snackbar.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, R.string.required_order, Snackbar.LENGTH_SHORT)
+                        .show()
                 }
             } else {
                 Snackbar.make(binding.root, R.string.enter_request, Snackbar.LENGTH_SHORT).show()
@@ -156,25 +125,6 @@ class HotelListFragment : Fragment() {
         )[HotelViewModel::class.java]
     }
 
-//    companion object {
-//        /**
-//         * Use this factory method to create a new instance of
-//         * this fragment using the provided parameters.
-//         *
-//         * @param param1 Parameter 1.
-//         * @param param2 Parameter 2.
-//         * @return A new instance of fragment HotelListFragment.
-//         */
-//        // TODO: Rename and change types and number of parameters
-//        @JvmStatic
-//        fun newInstance(param1: String, param2: String) =
-//            HotelListFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-//                }
-//            }
-//    }
 
     override fun onDestroyView() {
         super.onDestroyView()

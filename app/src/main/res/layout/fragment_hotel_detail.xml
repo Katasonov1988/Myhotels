@@ -18,12 +18,13 @@
     <ImageView
         android:id="@+id/iv_hotel_cover"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:background="@color/text_color"
         android:contentDescription="@string/book_cover"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/second_screen_toolbar"
         tools:srcCompat="@drawable/example_of_picture" />
 
