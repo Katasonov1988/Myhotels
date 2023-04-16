@@ -15,86 +15,74 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="205dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="210dp" />
-
     <ImageView
         android:id="@+id/iv_hotel_cover"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="8dp"
+        android:background="@color/text_color"
         android:contentDescription="@string/book_cover"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/second_screen_toolbar"
-        android:src="@drawable/ic_image_not_supported_24"
-        tools:ignore="RtlSymmetry"
         tools:srcCompat="@drawable/example_of_picture" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/first_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="center"
         android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        app:srcCompat="@drawable/ic_gold_star"
-        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/hotel_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hotel_name"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/iv_hotel_cover"
+        app:srcCompat="@drawable/ic_gold_star"
+        tools:ignore="RtlSymmetry" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/second_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="center"
-        app:srcCompat="@drawable/ic_gold_star"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/first_star"
         app:layout_constraintStart_toEndOf="@+id/first_star"
-        app:layout_constraintTop_toBottomOf="@+id/hotel_name"
-        />
+        app:layout_constraintTop_toTopOf="@+id/first_star"
+        app:srcCompat="@drawable/ic_gold_star" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/third_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="center"
-        app:srcCompat="@drawable/ic_gold_star"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/first_star"
         app:layout_constraintStart_toEndOf="@+id/second_star"
-        app:layout_constraintTop_toBottomOf="@+id/hotel_name"
-        />
+        app:layout_constraintTop_toTopOf="@+id/first_star"
+        app:srcCompat="@drawable/ic_gold_star" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fourth_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="center"
-        app:srcCompat="@drawable/ic_gold_star"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/first_star"
         app:layout_constraintStart_toEndOf="@+id/third_star"
-        app:layout_constraintTop_toBottomOf="@+id/hotel_name"
-        />
+        app:layout_constraintTop_toTopOf="@+id/first_star"
+        app:srcCompat="@drawable/ic_gold_star" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fifth_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="center"
-        app:srcCompat="@drawable/ic_gold_star"
-        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/first_star"
         app:layout_constraintStart_toEndOf="@+id/fourth_star"
-        app:layout_constraintTop_toBottomOf="@+id/hotel_name"
-        />
+        app:layout_constraintTop_toTopOf="@+id/first_star"
+        app:srcCompat="@drawable/ic_gold_star" />
 
     <TextView
         android:id="@+id/hotel_name"
@@ -102,13 +90,13 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:maxLines="2"
-
+        android:paddingStart="10dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="4dp"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:paddingStart="10dp"
-        android:paddingEnd="8dp"
-        android:paddingTop="4dp"
         app:layout_constraintBottom_toTopOf="@+id/hotel_address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_hotel_cover"
@@ -145,13 +133,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:drawablePadding="8dp"
+        android:gravity="bottom"
         android:paddingStart="6dp"
         android:paddingEnd="6dp"
-        android:gravity="bottom"
         app:drawableStartCompat="@drawable/ic_walk_16"
+        app:layout_constraintBottom_toTopOf="@id/middle_line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/top_line"
-        app:layout_constraintBottom_toTopOf="@id/middle_line"
         tools:text="2.3 км от центра" />
 
     <View
@@ -199,5 +187,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bottom_line"
         tools:text="показать на карте" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

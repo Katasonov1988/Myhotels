@@ -9,6 +9,8 @@ import java.util.*
 
 private const val COLON = ":"
 private const val BASE_IMAGE_URL = "https://github.com/iMofas/ios-android-test/raw/master/"
+private const val EMPTY_LINE = ""
+
 internal fun com.example.myhotels.data.network.model.HotelData.toHotelEntity(): HotelEntity {
     return HotelEntity(
         id = id,

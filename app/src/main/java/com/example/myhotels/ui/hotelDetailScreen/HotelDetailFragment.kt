@@ -1,6 +1,7 @@
 package com.example.myhotels.ui.hotelDetailScreen
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.myhotels.domain.model.HotelDetailItem
 import com.example.myhotels.ui.hotelsScreen.HotelViewModel
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
+import kotlin.math.log
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -60,6 +62,8 @@ class HotelDetailFragment : Fragment() {
         }
 
         viewModel.hotelItem.observe(viewLifecycleOwner) {
+            Log.d("Search", it.image)
+
             with(binding) {
                 hotelName.text = it.name
                 hotelAddress.text = it.address
@@ -67,7 +71,12 @@ class HotelDetailFragment : Fragment() {
                     resources.getString(R.string.distance_from_center, it.distance)
                 hotelSuitesAvailability.text =
                     resources.getString(R.string.count_of_free_rooms, it.suitesAvailability)
-                Picasso.get().load(it.image).into(ivHotelCover)
+                setNumberOfStars(it.stars)
+
+                Picasso.get()
+                    .load(it.image)
+                    .error(R.drawable.ic_image_not_supported_24)
+                    .into(ivHotelCover)
             }
         }
     }
@@ -125,6 +134,34 @@ class HotelDetailFragment : Fragment() {
                     putInt(HOTEL_ITEM_ID, hotelId)
                 }
             }
+    }
+
+    private fun setNumberOfStars(numberOfStars: Int) {
+        when (numberOfStars) {
+            1 -> binding.firstStar.visibility = View.VISIBLE
+            2 -> {
+                binding.firstStar.visibility = View.VISIBLE
+                binding.secondStar.visibility = View.VISIBLE
+            }
+            3 -> {
+                binding.firstStar.visibility = View.VISIBLE
+                binding.secondStar.visibility = View.VISIBLE
+                binding.thirdStar.visibility = View.VISIBLE
+            }
+            4 -> {
+                binding.firstStar.visibility = View.VISIBLE
+                binding.secondStar.visibility = View.VISIBLE
+                binding.thirdStar.visibility = View.VISIBLE
+                binding.fourthStar.visibility = View.VISIBLE
+            }
+            5 -> {
+                binding.firstStar.visibility = View.VISIBLE
+                binding.secondStar.visibility = View.VISIBLE
+                binding.thirdStar.visibility = View.VISIBLE
+                binding.fourthStar.visibility = View.VISIBLE
+                binding.fifthStar.visibility = View.VISIBLE
+            }
+        }
     }
 
     override fun onDestroyView() {

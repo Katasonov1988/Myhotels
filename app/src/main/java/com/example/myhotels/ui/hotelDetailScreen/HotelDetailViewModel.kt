@@ -22,6 +22,7 @@ class HotelDetailViewModel(
         viewModelScope.launch {
             try {
                 val item = getDetailHotelInteractor.invoke(hotelId)
+
                 _hotelItem.value = item
             } catch (e: IOException) {
                 Log.d("HotelItemInfo", "IOException response $e")
