@@ -13,4 +13,6 @@
     <dimen name="padding_start_end_hotel_name">10dp</dimen>
     <dimen name="padding_top_hotel_name">4dp</dimen>
     <dimen name="rv_hotel_list_margin">8dp</dimen>
+    <dimen name="tIL_hotel_list_margin">8dp</dimen>
+    <dimen name="boxStrokeWidth_hotel_list">1dp</dimen>
 </resources>

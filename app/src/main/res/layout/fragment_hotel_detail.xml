@@ -17,7 +17,7 @@
 
     <ImageView
         android:id="@+id/iv_hotel_cover"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/text_color"
         android:contentDescription="@string/book_cover"
@@ -52,6 +52,7 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/third_star"
+        style="@style/StyleStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/first_star"

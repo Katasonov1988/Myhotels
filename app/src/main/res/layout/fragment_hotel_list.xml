@@ -18,7 +18,7 @@
         android:id="@+id/til_search_hotels"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/tIL_hotel_list_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/main_toolbar">
@@ -27,12 +27,12 @@
             android:id="@+id/et_search_hotels"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:autofillHints="введите запрос"
+            android:autofillHints="@string/search_clue"
             android:hint="@string/search_clue"
             android:imeOptions="actionSearch"
             android:inputType="textNoSuggestions"
             android:selectAllOnFocus="true"
-            app:boxStrokeWidth="1dp"
+            app:boxStrokeWidth="@dimen/boxStrokeWidth_hotel_list"
             tools:text="0777" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -54,6 +54,18 @@
             tools:ignore="UnusedAttribute"
             tools:listitem="@layout/hotel_item" />
     </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progress"
+        style="?android:indeterminateProgressStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

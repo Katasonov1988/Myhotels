@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.myhotels.Injection
 import com.example.myhotels.R
 import com.example.myhotels.databinding.FragmentHotelListBinding
@@ -16,6 +17,7 @@ import com.example.myhotels.domain.model.HotelEntity
 import com.example.myhotels.ui.hotelDetailScreen.HotelDetailFragment
 import com.example.myhotels.ui.hotelsScreen.list.HotelEntityAdapter
 import com.google.android.material.snackbar.Snackbar
+import okhttp3.internal.addHeaderLenient
 
 
 private const val QUERY_FOR_HOTELS = "0777"
@@ -52,6 +54,7 @@ class HotelListFragment : Fragment() {
         }
 
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.itemAnimator = null
         binding.etSearchHotels.setText(QUERY_FOR_HOTELS)
 
         viewModel.hotels.observe(viewLifecycleOwner) {

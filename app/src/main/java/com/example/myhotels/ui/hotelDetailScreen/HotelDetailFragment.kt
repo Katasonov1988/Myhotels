@@ -1,15 +1,15 @@
 package com.example.myhotels.ui.hotelDetailScreen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.ui.setupWithNavController
 import com.example.myhotels.Injection
 import com.example.myhotels.R
 import com.example.myhotels.databinding.FragmentHotelDetailBinding
+import com.example.myhotels.ui.hotelDetailScreen.utils.CropBitmapTransformation
 import com.squareup.picasso.Picasso
 
 
@@ -75,15 +75,18 @@ class HotelDetailFragment : Fragment() {
                 hotelSuitesAvailability.text =
                     resources.getString(R.string.count_of_free_rooms, it.suitesAvailability)
                 setNumberOfStars(it.stars)
+                getAndSetImage(it.image)
 
-                Picasso.get()
-                    .load(it.image)
-                    .error(R.drawable.ic_image_not_supported_24)
-                    .resize(740, 410)
-                    .centerCrop()
-                    .into(ivHotelCover)
             }
         }
+    }
+
+    private fun getAndSetImage(image: String) {
+        Picasso.get()
+            .load(image)
+            .error(R.drawable.ic_image_not_supported_24)
+            .transform(CropBitmapTransformation())
+            .into(binding.ivHotelCover)
     }
 
     private fun initialToolbar() {

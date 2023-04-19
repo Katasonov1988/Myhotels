@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.myhotels.R
 import com.example.myhotels.databinding.HotelItemBinding
 import com.example.myhotels.domain.model.HotelEntity
@@ -23,6 +24,7 @@ class HotelEntityAdapter(
         )
         return HotelEntityViewHolder(binding)
     }
+
 
     override fun onBindViewHolder(holder: HotelEntityViewHolder, position: Int) {
         val hotel = getItem(position)
