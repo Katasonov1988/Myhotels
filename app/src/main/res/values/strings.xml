@@ -14,5 +14,6 @@
     <string name="about_hotel">Об отеле</string>
     <string name="pressed_button">Нажата кнопка фильтр</string>
     <string name="show_on_map">показать на карте</string>
+    <string name="show_hotel_on_map">geo:%s?q=%s</string>
 
 </resources>

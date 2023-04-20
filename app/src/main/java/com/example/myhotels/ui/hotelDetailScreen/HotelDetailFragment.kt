@@ -1,5 +1,7 @@
 package com.example.myhotels.ui.hotelDetailScreen
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +30,7 @@ class HotelDetailFragment : Fragment() {
             }
     }
 
+    private lateinit var hotelCoordinates: String
     private lateinit var viewModel: HotelDetailViewModel
 
     private var _binding: FragmentHotelDetailBinding? = null
@@ -76,8 +79,13 @@ class HotelDetailFragment : Fragment() {
                     resources.getString(R.string.count_of_free_rooms, it.suitesAvailability)
                 setNumberOfStars(it.stars)
                 getAndSetImage(it.image)
-
+                hotelCoordinates = it.coordinates
             }
+        }
+
+        binding.showLocation.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(hotelCoordinates))
+            startActivity(intent)
         }
     }
 

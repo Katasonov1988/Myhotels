@@ -167,6 +167,8 @@
         style="@style/TextView_style_hotel_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/purple_500"
+        android:textStyle="italic"
         android:text="@string/show_on_map"
         app:drawableStartCompat="@drawable/baseline_map_24"
         app:layout_constraintStart_toStartOf="parent"

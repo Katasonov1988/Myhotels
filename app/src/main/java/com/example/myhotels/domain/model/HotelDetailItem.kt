@@ -8,6 +8,5 @@ data class HotelDetailItem(
     val distance: String,
     val suitesAvailability: String,
     val image: String,
-    val lat: Double,
-    val lon: Double
+    val coordinates: String
 )
