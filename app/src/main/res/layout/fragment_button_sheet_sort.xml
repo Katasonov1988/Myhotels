@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sort_by"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:textSize="24sp"
+        android:padding="8dp" />
+    <View
+        android:id="@+id/top_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:padding="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/light_grey" />
+    <RadioGroup
+        android:id="@+id/radioGroup_sort_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rb_default_sort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:layoutDirection="rtl"
+            android:text="@string/sort_by_default" />
+
+        <RadioButton
+            android:id="@+id/rb_distance_sort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:text="@string/sort_by_distance" />
+
+        <RadioButton
+            android:id="@+id/rb_red_velvet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:text="@string/sotr_by_number_of_rooms" />
+
+    </RadioGroup>
+</LinearLayout>

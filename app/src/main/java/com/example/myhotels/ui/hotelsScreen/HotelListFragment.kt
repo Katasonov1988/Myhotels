@@ -16,6 +16,7 @@ import com.example.myhotels.databinding.FragmentHotelListBinding
 import com.example.myhotels.domain.model.HotelEntity
 import com.example.myhotels.ui.hotelDetailScreen.HotelDetailFragment
 import com.example.myhotels.ui.hotelsScreen.list.HotelEntityAdapter
+import com.example.myhotels.ui.sort_button_sheet_fragment.ButtonSheetSortFragment
 import com.google.android.material.snackbar.Snackbar
 import okhttp3.internal.addHeaderLenient
 
@@ -90,6 +91,10 @@ class HotelListFragment : Fragment() {
                 R.id.action_filter_hotels -> {
                     Snackbar.make(binding.root, R.string.pressed_button, Snackbar.LENGTH_SHORT)
                         .show()
+                    ButtonSheetSortFragment().show(
+                        requireActivity().supportFragmentManager,
+                        "sortHotels"
+                    )
                     true
                 }
                 else -> false

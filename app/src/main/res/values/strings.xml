@@ -15,5 +15,9 @@
     <string name="pressed_button">Нажата кнопка фильтр</string>
     <string name="show_on_map">показать на карте</string>
     <string name="show_hotel_on_map">geo:%s?q=%s</string>
+    <string name="sort_by">Сортировать</string>
+    <string name="sort_by_default">По умолчанию</string>
+    <string name="sort_by_distance">Расстояние от центра города</string>
+    <string name="sotr_by_number_of_rooms">Колличество свободных номеров</string>
 
 </resources>
