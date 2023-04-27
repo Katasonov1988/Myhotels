@@ -53,6 +53,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit-mock:2.9.0"
     implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"
+    
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0'
 
@@ -61,11 +62,12 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
-    implementation 'com.squareup.picasso:picasso:2.8'
-    kapt "androidx.lifecycle:lifecycle-compiler:2.5.1"
+
+
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.3"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.3"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.5.3"
+
     implementation 'com.squareup.picasso:picasso:2.8'
     kapt "androidx.room:room-compiler:2.5.1"
 

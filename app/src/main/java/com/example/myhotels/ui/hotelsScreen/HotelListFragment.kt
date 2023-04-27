@@ -1,13 +1,19 @@
 package com.example.myhotels.ui.hotelsScreen
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.core.util.Preconditions
+import androidx.fragment.app.FragmentResultListener
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.myhotels.Injection
@@ -23,6 +29,8 @@ import okhttp3.internal.addHeaderLenient
 
 private const val QUERY_FOR_HOTELS = "0777"
 private const val SCROLL_POSITION = 0
+const val REQUEST_KEY = "requestKey"
+const val KEY_NUMBER = "key-number"
 
 class HotelListFragment : Fragment() {
 
@@ -31,6 +39,24 @@ class HotelListFragment : Fragment() {
     private val binding: FragmentHotelListBinding
         get() = _binding ?: throw RuntimeException("FragmentHotelListBinding is null")
 
+    private var chosenSort: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        Log.d("radioB", "onCreate_mainFragment")
+        setUpResultListener()
+    }
+
+    private fun setUpResultListener() {
+        childFragmentManager.setFragmentResultListener(
+            REQUEST_KEY,
+            this
+        ) { requestKey, bundle ->
+            chosenSort = bundle.getString(KEY_NUMBER)
+            binding.testView.text = chosenSort.toString().trim()
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,14 +64,23 @@ class HotelListFragment : Fragment() {
     ): View {
         _binding = FragmentHotelListBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("radioB", "onViewCreated_mainFragment")
+
+        childFragmentManager.setFragmentResultListener(
+            REQUEST_KEY,
+            this
+        ) { requestKey, bundle ->
+            chosenSort = bundle.getString(KEY_NUMBER)
+            binding.testView.text = chosenSort.toString().trim()
+        }
 
         initialToolbar()
         initViewModel()
-
 
         val adapter = context?.let { HotelEntityAdapter(it) }
         adapter?.onHotelClickListener = object : HotelEntityAdapter.OnHotelClickListener {
@@ -74,6 +109,7 @@ class HotelListFragment : Fragment() {
 
     }
 
+
     private fun launchHotelDetailActivity(hotelId: Int) {
         requireActivity().supportFragmentManager.popBackStack()
         requireActivity().supportFragmentManager
@@ -89,6 +125,7 @@ class HotelListFragment : Fragment() {
         binding.mainToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_filter_hotels -> {
+                    Log.d("radioB", chosenSort.toString())
                     Snackbar.make(binding.root, R.string.pressed_button, Snackbar.LENGTH_SHORT)
                         .show()
                     ButtonSheetSortFragment().show(
@@ -135,5 +172,29 @@ class HotelListFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onStart() {
+        setFragmentResultListener("requestKey") { key, bundle ->
+            val result = bundle.getString("bundleKey")
+            chosenSort = result.toString()
+        }
+        super.onStart()
+        Log.d("radioB", "onStart_mainFragment")
+    }
+
+    override fun onResume() {
+        Log.d("radioB", "onResume_mainFragment")
+        super.onResume()
+    }
+
+    override fun onStop() {
+        Log.d("radioB", "onStop_mainFragment")
+        super.onStop()
+    }
+
+    override fun onPause() {
+        Log.d("radioB", "onPause_mainFragment")
+        super.onPause()
     }
 }

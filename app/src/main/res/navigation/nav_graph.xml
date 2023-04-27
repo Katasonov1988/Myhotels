@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_hotelListFragment_to_hotelDetailFragment"
             app:destination="@id/hotelDetailFragment" />
+        <action
+            android:id="@+id/action_hotelListFragment_to_buttonSheetSortFragment"
+            app:destination="@id/buttonSheetSortFragment" />
     </fragment>
     <fragment
         android:id="@+id/hotelDetailFragment"
@@ -28,4 +31,14 @@
             app:popUpTo="@id/hotelListFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <dialog
+        android:id="@+id/buttonSheetSortFragment"
+        android:name="com.example.myhotels.ui.sort_button_sheet_fragment.ButtonSheetSortFragment"
+        android:label="ButtonSheetSortFragment" >
+        <action
+            android:id="@+id/action_buttonSheetSortFragment_to_hotelListFragment"
+            app:destination="@id/hotelListFragment"
+            app:popUpTo="@id/hotelListFragment"
+            app:popUpToInclusive="true" />
+    </dialog>
 </navigation>

@@ -30,7 +30,6 @@
             android:id="@+id/rb_default_sort"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:layoutDirection="rtl"
             android:text="@string/sort_by_default" />
 
@@ -42,7 +41,7 @@
             android:text="@string/sort_by_distance" />
 
         <RadioButton
-            android:id="@+id/rb_red_velvet"
+            android:id="@+id/rb_number_free_rooms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layoutDirection="rtl"

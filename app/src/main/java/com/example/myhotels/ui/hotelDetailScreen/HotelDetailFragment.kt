@@ -48,7 +48,6 @@ class HotelDetailFragment : Fragment() {
                 hotelId = it.getInt(HOTEL_ITEM_ID)
             }
         }
-
     }
 
     override fun onCreateView(
@@ -98,7 +97,6 @@ class HotelDetailFragment : Fragment() {
     }
 
     private fun initialToolbar() {
-        binding.secondScreenToolbar.inflateMenu(R.menu.first_screen_filter_menu)
         binding.secondScreenToolbar.setNavigationIcon(R.drawable.ic_back_24)
         binding.secondScreenToolbar.setTitle(R.string.about_hotel)
         binding.secondScreenToolbar.setNavigationOnClickListener {
