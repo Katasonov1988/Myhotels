@@ -4,6 +4,7 @@
     <item
         android:id="@+id/action_filter_hotels"
         android:icon="@drawable/ic_filter_white_24"
+        android:visible="false"
         android:title="@string/sortingOfHotels"
         app:showAsAction="always" />
 </menu>

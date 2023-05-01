@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.example.myhotels.R
 import com.example.myhotels.databinding.HotelItemBinding
 import com.example.myhotels.domain.model.HotelEntity
@@ -34,9 +33,9 @@ class HotelEntityAdapter(
                 hotelName.text = name
                 hotelAddress.text = address
                 hotelSuitesAvailability.text =
-                    resources.getString(R.string.count_of_free_rooms, suitesAvailability)
+                    resources.getString(R.string.count_of_free_rooms, suitesAvailability.toString())
                 distanceFromCenter.text =
-                    resources.getString(R.string.distance_from_center, distance)
+                    resources.getString(R.string.distance_from_center, distance.toString())
 
                 when (stars) {
                     1 -> firstStar.visibility = View.VISIBLE

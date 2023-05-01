@@ -5,7 +5,7 @@ data class HotelEntity(
     val name: String,
     val address: String,
     val stars: Int,
-    val distance: String,
-    val suitesAvailability: String
+    val distance: Double,
+    val suitesAvailability: Int
 )
 

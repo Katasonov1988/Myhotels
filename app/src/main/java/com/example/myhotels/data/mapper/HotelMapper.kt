@@ -37,7 +37,7 @@ class HotelMapper {
         name = hotelData.name,
         address = hotelData.address.lowercase(),
         stars = hotelData.stars.toInt(),
-        distance = hotelData.distance.toString(),
-        suitesAvailability = hotelData.suitesAvailability.split(COLON).size.toString()
+        distance = hotelData.distance,
+        suitesAvailability = hotelData.suitesAvailability.split(COLON).size
     )
 }

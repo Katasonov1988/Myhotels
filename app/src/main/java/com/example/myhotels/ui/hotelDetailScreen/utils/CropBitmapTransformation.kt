@@ -5,11 +5,21 @@ import com.squareup.picasso.Transformation
 
 private const val X_SIZE = 4
 private const val Y_SIZE = 4
+private const val WIDTH = 8
+private const val HEIGHT = 8
 private const val CROP_BITMAP = "crop_bitmap"
 
-class CropBitmapTransformation: Transformation {
+class CropBitmapTransformation : Transformation {
     override fun transform(source: Bitmap?): Bitmap? {
-        val result = source?.let { Bitmap.createBitmap(it, X_SIZE, Y_SIZE, source.width - 8, source.height - 8) }
+        val result = source?.let {
+            Bitmap.createBitmap(
+                it,
+                X_SIZE,
+                Y_SIZE,
+                source.width - WIDTH,
+                source.height - HEIGHT
+            )
+        }
         if (result != source) {
             source?.recycle()
         }
@@ -17,8 +27,7 @@ class CropBitmapTransformation: Transformation {
     }
 
     override fun key(): String {
-   return CROP_BITMAP
+        return CROP_BITMAP
     }
-
 
 }
