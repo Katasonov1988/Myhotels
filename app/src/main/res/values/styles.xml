@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Widget.MyBookshelf.MaterialComponents.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
-        <item name="boxStrokeColor">#7A7A7A</item>
+    <style name="Widget.MyBookshelf.MaterialComponents.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">#373737</item>
         <item name="hintTextColor">#7A7A7A</item>
         <item name="boxStrokeWidth">2dp</item>
+
+
+        <item name="android:textAppearance">?attr/textAppearanceBody1</item>
     </style>
 
     <style name="StyleStar">
@@ -19,8 +22,7 @@
         <item name="android:paddingEnd">@dimen/padding_end</item>
     </style>
 
-    <style name="Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary">
 
-    </style>
+
 
 </resources>

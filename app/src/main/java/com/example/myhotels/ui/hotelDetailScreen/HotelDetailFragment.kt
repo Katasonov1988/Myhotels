@@ -112,29 +112,11 @@ class HotelDetailFragment : Fragment() {
 
     private fun setNumberOfStars(numberOfStars: Int) {
         when (numberOfStars) {
-            1 -> binding.firstStar.visibility = View.VISIBLE
-            2 -> {
-                binding.firstStar.visibility = View.VISIBLE
-                binding.secondStar.visibility = View.VISIBLE
-            }
-            3 -> {
-                binding.firstStar.visibility = View.VISIBLE
-                binding.secondStar.visibility = View.VISIBLE
-                binding.thirdStar.visibility = View.VISIBLE
-            }
-            4 -> {
-                binding.firstStar.visibility = View.VISIBLE
-                binding.secondStar.visibility = View.VISIBLE
-                binding.thirdStar.visibility = View.VISIBLE
-                binding.fourthStar.visibility = View.VISIBLE
-            }
-            5 -> {
-                binding.firstStar.visibility = View.VISIBLE
-                binding.secondStar.visibility = View.VISIBLE
-                binding.thirdStar.visibility = View.VISIBLE
-                binding.fourthStar.visibility = View.VISIBLE
-                binding.fifthStar.visibility = View.VISIBLE
-            }
+            1 -> setOneStars()
+            2 -> setTwoStars()
+            3 -> setThreeStars()
+            4 -> setFourStars()
+            5 -> setFiveStars()
         }
     }
 
@@ -146,5 +128,34 @@ class HotelDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setFiveStars() {
+        binding.firstStar.visibility = View.VISIBLE
+        binding.secondStar.visibility = View.VISIBLE
+        binding.thirdStar.visibility = View.VISIBLE
+        binding.fourthStar.visibility = View.VISIBLE
+        binding.fifthStar.visibility = View.VISIBLE
+    }
+
+    private fun setFourStars() {
+        binding.firstStar.visibility = View.VISIBLE
+        binding.secondStar.visibility = View.VISIBLE
+        binding.thirdStar.visibility = View.VISIBLE
+        binding.fourthStar.visibility = View.VISIBLE
+    }
+
+    private fun setThreeStars() {
+        binding.firstStar.visibility = View.VISIBLE
+        binding.secondStar.visibility = View.VISIBLE
+        binding.thirdStar.visibility = View.VISIBLE
+    }
+
+    private fun setTwoStars() {
+        binding.firstStar.visibility = View.VISIBLE
+        binding.secondStar.visibility = View.VISIBLE
+    }
+    private fun setOneStars() {
+        binding.firstStar.visibility = View.VISIBLE
     }
 }

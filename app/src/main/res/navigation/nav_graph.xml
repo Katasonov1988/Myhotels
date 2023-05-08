@@ -33,7 +33,7 @@
     </fragment>
     <dialog
         android:id="@+id/buttonSheetSortFragment"
-        android:name="com.example.myhotels.ui.sort_button_sheet_fragment.ButtonSheetSortFragment"
+        android:name="com.example.myhotels.ui.sortButtonSheetFragment.ButtonSheetSortFragment"
         android:label="ButtonSheetSortFragment" >
         <action
             android:id="@+id/action_buttonSheetSortFragment_to_hotelListFragment"

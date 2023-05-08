@@ -19,5 +19,6 @@
     <string name="sort_by_default">По умолчанию</string>
     <string name="sort_by_distance">Расстояние от центра города</string>
     <string name="sotr_by_number_of_rooms">Колличество свободных номеров</string>
+    <string name="nothing_found">ничего не найдено</string>
 
 </resources>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="1dp"
+    app:cardBackgroundColor="?attr/colorOnPrimary"
     app:cardElevation="3dp"
     app:cardUseCompatPadding="true">
 
@@ -15,7 +16,7 @@
         >
 
         <View
-            android:id="@+id/top_line"
+            android:id="@+id/line_for_distance"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="4dp"
@@ -91,12 +92,11 @@
             android:paddingBottom="4dp"
             android:paddingStart="2dp"
             android:paddingEnd="2dp"
-            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/hotel_address"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/top_line"
+            app:layout_constraintTop_toBottomOf="@+id/line_for_distance"
             tools:text="Best Western President Hotel at Times Square" />
 
         <TextView
