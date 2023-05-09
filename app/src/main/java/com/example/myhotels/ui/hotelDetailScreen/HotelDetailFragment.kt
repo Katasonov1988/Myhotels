@@ -77,7 +77,7 @@ class HotelDetailFragment : Fragment() {
                 hotelSuitesAvailability.text =
                     resources.getString(R.string.count_of_free_rooms, it.suitesAvailability)
                 setNumberOfStars(it.stars)
-                getAndSetImage(it.image)
+                getImage(it.image)
                 hotelCoordinates = it.coordinates
             }
         }
@@ -88,7 +88,7 @@ class HotelDetailFragment : Fragment() {
         }
     }
 
-    private fun getAndSetImage(image: String) {
+    private fun getImage(image: String) {
         Picasso.get()
             .load(image)
             .error(R.drawable.ic_image_not_supported_24)
@@ -155,6 +155,7 @@ class HotelDetailFragment : Fragment() {
         binding.firstStar.visibility = View.VISIBLE
         binding.secondStar.visibility = View.VISIBLE
     }
+
     private fun setOneStars() {
         binding.firstStar.visibility = View.VISIBLE
     }

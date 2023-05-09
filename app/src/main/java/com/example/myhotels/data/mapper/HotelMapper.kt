@@ -1,6 +1,5 @@
 package com.example.myhotels.data.mapper
 
-import com.example.myhotels.R
 import com.example.myhotels.data.network.model.HotelData
 import com.example.myhotels.data.network.model.HotelDetailItemData
 import com.example.myhotels.domain.model.HotelDetailItem

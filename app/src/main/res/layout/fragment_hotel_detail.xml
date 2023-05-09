@@ -113,13 +113,13 @@
         android:gravity="bottom"
         android:maxLines="2"
         app:drawableStartCompat="@drawable/ic_place_24"
-        app:layout_constraintBottom_toTopOf="@+id/line_for_distance"
+        app:layout_constraintBottom_toTopOf="@+id/sort_line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/hotel_name"
         tools:text="210 W. 55 STREET, NEW YORK NY 10019, UNITED STATES" />
 
     <View
-        android:id="@+id/line_for_distance"
+        android:id="@+id/sort_line"
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_height"
         android:layout_margin="@dimen/view_margin"
@@ -137,7 +137,7 @@
         app:drawableStartCompat="@drawable/ic_walk_16"
         app:layout_constraintBottom_toTopOf="@id/line_for_number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/line_for_distance"
+        app:layout_constraintTop_toBottomOf="@id/sort_line"
         tools:text="2.3 км от центра" />
 
     <View

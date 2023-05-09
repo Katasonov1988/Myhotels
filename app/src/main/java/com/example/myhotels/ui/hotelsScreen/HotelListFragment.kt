@@ -2,7 +2,6 @@ package com.example.myhotels.ui.hotelsScreen
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,7 +17,7 @@ import com.example.myhotels.databinding.FragmentHotelListBinding
 import com.example.myhotels.domain.model.HotelEntity
 import com.example.myhotels.ui.hotelDetailScreen.HotelDetailFragment
 import com.example.myhotels.ui.hotelsScreen.list.HotelEntityAdapter
-import com.example.myhotels.ui.sortButtonSheetFragment.ButtonSheetSortFragment
+import com.example.myhotels.ui.sortButtonSheetFragment.BottomSheetSortFragment
 import com.example.myhotels.ui.sortButtonSheetFragment.DEFAULT_SORT
 import com.google.android.material.snackbar.Snackbar
 
@@ -47,7 +46,6 @@ class HotelListFragment : Fragment() {
     ): View {
         _binding = FragmentHotelListBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -59,7 +57,7 @@ class HotelListFragment : Fragment() {
         setRecViewItemDecoration()
 
 
-        val adapter = context?.let { HotelEntityAdapter(it) }
+        val adapter = context?.let { HotelEntityAdapter() }
         adapter?.onHotelClickListener = object : HotelEntityAdapter.OnHotelClickListener {
             override fun onHotelClick(hotelInfo: HotelEntity) {
                 launchHotelDetailActivity(hotelInfo.id)
@@ -79,7 +77,7 @@ class HotelListFragment : Fragment() {
 
         binding.etSearchHotels.setOnKeyListener { view, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                makeRequestToEnternet()
+                pushRequest()
                 inputMethodManager(view)
                 true
             } else {
@@ -112,10 +110,9 @@ class HotelListFragment : Fragment() {
         requireActivity().supportFragmentManager.setFragmentResultListener(
             REQUEST_KEY_SORT,
             viewLifecycleOwner
-        ) { requestKey, bundle ->
+        ) { _, bundle ->
             chosenSort = bundle.getString(KEY_SORT).toString()
             viewModel.sortHotels(chosenSort)
-            Log.d("radioB", "HotelFragmentChosenSort: $chosenSort")
         }
     }
 
@@ -134,7 +131,7 @@ class HotelListFragment : Fragment() {
         binding.mainToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_filter_hotels -> {
-                    ButtonSheetSortFragment.newInstance(chosenSort).show(
+                    BottomSheetSortFragment.newInstance(chosenSort).show(
                         requireActivity().supportFragmentManager,
                         SORT_HOTELS
                     )
@@ -152,10 +149,11 @@ class HotelListFragment : Fragment() {
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, FLAG)
     }
 
-    private fun makeRequestToEnternet() {
+    private fun pushRequest() {
         binding.etSearchHotels.text.trim().let {
             if (it.isNotEmpty()) {
                 binding.progress.isVisible = true
+                binding.tvNothingFound.isVisible = false
                 if (it.toString() == QUERY_FOR_HOTELS) {
                     viewModel.getHotelsDataFromNetwork(it.toString(), chosenSort)
                 } else {

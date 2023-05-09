@@ -11,10 +11,8 @@
         <item name="colorOnSecondary">@color/text_color</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
-
         <!-- Customize your theme here. -->
         <item name="textInputStyle">@style/Widget.MyBookshelf.MaterialComponents.TextInputLayout
         </item>
-<!--        <item name="toolbarStyle">@style/Toolbar</item>-->
     </style>
 </resources>

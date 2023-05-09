@@ -29,5 +29,4 @@ class CropBitmapTransformation : Transformation {
     override fun key(): String {
         return CROP_BITMAP
     }
-
 }

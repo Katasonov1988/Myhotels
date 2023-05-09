@@ -21,5 +21,5 @@ object ApiFactory {
         .client(client)
         .build()
 
-    val apiService = retrofit.create(ApiService::class.java)
+    val apiService: ApiService = retrofit.create(ApiService::class.java)
 }

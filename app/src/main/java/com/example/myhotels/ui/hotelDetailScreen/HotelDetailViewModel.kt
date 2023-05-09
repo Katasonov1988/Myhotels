@@ -18,9 +18,6 @@ class HotelDetailViewModel(
     val hotelItem: LiveData<HotelDetailItem>
         get() = _hotelItem
 
-    private val _currentSort = MutableLiveData<String>()
-    val currentSort: LiveData<String> = _currentSort
-
     fun getHotelDetailItem(hotelId: Int) {
         viewModelScope.launch {
             try {

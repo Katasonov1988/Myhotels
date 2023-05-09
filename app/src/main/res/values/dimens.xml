@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <dimen name="padding_start_first_star">8dp</dimen>
     <dimen name="padding_iv">8dp</dimen>
     <dimen name="padding_bottom_layout_detail_screen">8dp</dimen>
@@ -15,4 +14,12 @@
     <dimen name="rv_hotel_list_margin">8dp</dimen>
     <dimen name="tIL_hotel_list_margin">8dp</dimen>
     <dimen name="boxStrokeWidth_hotel_list">1dp</dimen>
+    <dimen name="radioGroup_padding">8dp</dimen>
+    <dimen name="tv_sort_padding">8dp</dimen>
+    <dimen name="sort_line_view_margin">8dp</dimen>
+    <dimen name="sort_line_view_padding">8dp</dimen>
+    <dimen name="hotel_item_cl_padding">8dp</dimen>
+    <dimen name="hotel_item_view_margin_top">4dp</dimen>
+    <dimen name="hotel_item_view_card_corner_radius">1dp</dimen>
+    <dimen name="hotel_item_view_card_elevation">3dp</dimen>
 </resources>

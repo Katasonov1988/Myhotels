@@ -1,6 +1,5 @@
 package com.example.myhotels.ui.hotelsScreen.list
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,8 @@ import com.example.myhotels.R
 import com.example.myhotels.databinding.HotelItemBinding
 import com.example.myhotels.domain.model.HotelEntity
 
-class HotelEntityAdapter(
-    private val context: Context
-) : ListAdapter<HotelEntity, HotelEntityViewHolder>(HotelEntityDiffCallback) {
+class HotelEntityAdapter :
+    ListAdapter<HotelEntity, HotelEntityViewHolder>(HotelEntityDiffCallback) {
 
     var onHotelClickListener: OnHotelClickListener? = null
 
