@@ -19,13 +19,12 @@ import retrofit2.http.Path
 interface ApiService {
     companion object {
         private const val KEY_PARAM = "keyOfListHotel"
-        private const val KEY = "0777"
         private const val HOTEL_ID = "hotelId"
     }
 
     @GET("ios-android-test/master/{keyOfListHotel}.json")
-    suspend fun getFullHotelList(
-        @Path(KEY_PARAM) keyOfListHotel: String = KEY
+    suspend fun getFullHotels(
+        @Path(KEY_PARAM) keyOfListHotel: String
     ): List<HotelData>
 
 

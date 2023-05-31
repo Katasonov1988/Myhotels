@@ -1,5 +1,6 @@
 package com.example.myhotels.data.repository
 
+import android.util.Log
 import com.example.myhotels.data.mapper.HotelMapper
 import com.example.myhotels.data.mapper.toHotelDetailItem
 import com.example.myhotels.data.network.ApiService
@@ -17,8 +18,10 @@ class HotelsRepositoryImpl(private val apiService: ApiService) : HotelsRepositor
     override suspend fun loadHotelsDataFromNetwork(query: String): List<HotelEntity> {
         var hotelsDataFromNetwork: List<HotelData> = listOf()
         try {
-            hotelsDataFromNetwork = apiService.getFullHotelList(query)
-        } catch (_: Exception) {
+            hotelsDataFromNetwork = apiService.getFullHotels(query)
+        } catch (e: Exception) {
+            Log.d("showException", e.message.toString())
+            e.printStackTrace()
         }
         return hotelsDataFromNetwork.map {
             mapper.mapHotelDataToHotelEntity(it)

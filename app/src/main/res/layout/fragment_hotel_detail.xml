@@ -17,11 +17,12 @@
 
     <ImageView
         android:id="@+id/iv_hotel_cover"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
         android:contentDescription="@string/book_cover"
-        android:paddingTop="@dimen/padding_iv"
-        android:paddingBottom="@dimen/padding_iv"
+        android:paddingStart="@dimen/fragment_hotel_detail_paddingStart"
+        android:paddingEnd="@dimen/fragment_hotel_detail_paddingEnd"
+        android:src="@drawable/ic_image_not_supported_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/second_screen_toolbar"
@@ -88,22 +89,23 @@
         android:paddingStart="@dimen/padding_start_end_hotel_name"
         android:paddingTop="@dimen/padding_top_hotel_name"
         android:paddingEnd="@dimen/padding_start_end_hotel_name"
-        android:textSize="16sp"
+        android:textSize="@dimen/fragment_hotel_detail_hotelName_textSize"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/hotel_address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_hotel_cover"
         tools:text="Best Western President Hotel at Times Square" />
+
     <View
         android:id="@+id/line_for_address"
         android:layout_width="match_parent"
         android:layout_height="@dimen/view_height"
         android:layout_margin="@dimen/view_margin"
         android:background="@color/view_color"
+        app:layout_constraintBottom_toTopOf="@id/hotel_address"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/hotel_name"
-        app:layout_constraintBottom_toTopOf="@id/hotel_address"/>
+        app:layout_constraintTop_toBottomOf="@id/hotel_name" />
 
     <TextView
         android:id="@+id/hotel_address"
@@ -175,9 +177,9 @@
         style="@style/TextView_style_hotel_detail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:text="@string/show_on_map"
         android:textColor="@color/purple_500"
         android:textStyle="italic"
-        android:text="@string/show_on_map"
         app:drawableStartCompat="@drawable/baseline_map_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/line_for_map"

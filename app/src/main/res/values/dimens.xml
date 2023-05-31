@@ -22,4 +22,8 @@
     <dimen name="hotel_item_view_margin_top">4dp</dimen>
     <dimen name="hotel_item_view_card_corner_radius">1dp</dimen>
     <dimen name="hotel_item_view_card_elevation">3dp</dimen>
+    <dimen name="fragment_bottomSheet_textSizeTitle">24sp</dimen>
+    <dimen name="fragment_hotel_detail_hotelName_textSize">16sp</dimen>
+    <dimen name="fragment_hotel_detail_paddingEnd">8dp</dimen>
+    <dimen name="fragment_hotel_detail_paddingStart">8dp</dimen>
 </resources>

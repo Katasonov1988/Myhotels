@@ -93,13 +93,11 @@ class BottomSheetSortFragment : BottomSheetDialogFragment() {
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        Log.d("radioB", "BottomFragment: onSaveInstanceSave")
         super.onSaveInstanceState(outState)
         typeSort?.let { outState.putString(KEY_SAVED_TYPE_SORT, it) }
     }
 
     override fun onDestroyView() {
-        Log.d("radioB", "BottomFragment: onDestroyView")
         super.onDestroyView()
         _binding = null
     }

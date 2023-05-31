@@ -7,7 +7,6 @@ import com.example.myhotels.domain.model.HotelEntity
 import java.util.*
 
 private const val COLON = ":"
-private const val ZOOM = "?z=20"
 private const val GEO = "geo:"
 private const val COMMA = ","
 private const val EXTRA_NAME = "?q="
@@ -17,10 +16,7 @@ internal fun HotelDetailItemData.toHotelDetailItem(): HotelDetailItem {
     return HotelDetailItem(
         id = id,
         name = name,
-        address = address.lowercase()
-            .replaceFirstChar {
-                if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString()
-            },
+        address = address.lowercase(),
         stars = stars.toInt(),
         distance = distance.toString(),
         suitesAvailability = suitesAvailability.split(COLON).size.toString(),

@@ -72,27 +72,37 @@ class HotelDetailFragment : Fragment() {
             with(binding) {
                 hotelName.text = it.name
                 hotelAddress.text = it.address
-                distanceFromCenter.text =
-                    resources.getString(R.string.distance_from_center, it.distance)
-                hotelSuitesAvailability.text =
-                    resources.getString(R.string.count_of_free_rooms, it.suitesAvailability)
+                distanceFromCenter.text = convertDistanceFromCenter(it.distance)
+                hotelSuitesAvailability.text = convertSuitesAvailability(it.suitesAvailability)
                 setNumberOfStars(it.stars)
-                getImage(it.image)
+                getAndSetImageToView(it.image)
                 hotelCoordinates = it.coordinates
             }
         }
 
         binding.showLocation.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(hotelCoordinates))
-            startActivity(intent)
+            findHotelOnGoogleMaps(hotelCoordinates)
         }
     }
 
-    private fun getImage(image: String) {
+    private fun convertDistanceFromCenter(distance: String): String {
+        return resources.getString(R.string.distance_from_center, distance)
+    }
+
+    private fun convertSuitesAvailability(suitesAvailability: String): String {
+        return resources.getString(R.string.count_of_free_rooms, suitesAvailability)
+    }
+
+    private fun findHotelOnGoogleMaps(hotelCoordinates: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(hotelCoordinates))
+        startActivity(intent)
+    }
+
+    private fun getAndSetImageToView(image: String) {
         Picasso.get()
             .load(image)
-            .error(R.drawable.ic_image_not_supported_24)
             .transform(CropBitmapTransformation())
+            .error(R.drawable.ic_image_not_supported_24)
             .into(binding.ivHotelCover)
     }
 
@@ -108,15 +118,18 @@ class HotelDetailFragment : Fragment() {
         viewModel = ViewModelProvider(
             this, Injection.provideHotelDetailViewModelFactory()
         ).get(HotelDetailViewModel::class.java)
+
     }
 
     private fun setNumberOfStars(numberOfStars: Int) {
-        when (numberOfStars) {
-            1 -> setOneStars()
-            2 -> setTwoStars()
-            3 -> setThreeStars()
-            4 -> setFourStars()
-            5 -> setFiveStars()
+        for (i in 1..numberOfStars) {
+            when (i) {
+                1 -> binding.firstStar.visibility = View.VISIBLE
+                2 -> binding.secondStar.visibility = View.VISIBLE
+                3 -> binding.thirdStar.visibility = View.VISIBLE
+                4 -> binding.fourthStar.visibility = View.VISIBLE
+                5 -> binding.fifthStar.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -128,35 +141,5 @@ class HotelDetailFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun setFiveStars() {
-        binding.firstStar.visibility = View.VISIBLE
-        binding.secondStar.visibility = View.VISIBLE
-        binding.thirdStar.visibility = View.VISIBLE
-        binding.fourthStar.visibility = View.VISIBLE
-        binding.fifthStar.visibility = View.VISIBLE
-    }
-
-    private fun setFourStars() {
-        binding.firstStar.visibility = View.VISIBLE
-        binding.secondStar.visibility = View.VISIBLE
-        binding.thirdStar.visibility = View.VISIBLE
-        binding.fourthStar.visibility = View.VISIBLE
-    }
-
-    private fun setThreeStars() {
-        binding.firstStar.visibility = View.VISIBLE
-        binding.secondStar.visibility = View.VISIBLE
-        binding.thirdStar.visibility = View.VISIBLE
-    }
-
-    private fun setTwoStars() {
-        binding.firstStar.visibility = View.VISIBLE
-        binding.secondStar.visibility = View.VISIBLE
-    }
-
-    private fun setOneStars() {
-        binding.firstStar.visibility = View.VISIBLE
     }
 }

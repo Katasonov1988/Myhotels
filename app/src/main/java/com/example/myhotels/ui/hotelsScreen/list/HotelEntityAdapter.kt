@@ -34,30 +34,13 @@ class HotelEntityAdapter :
                     resources.getString(R.string.count_of_free_rooms, suitesAvailability.toString())
                 distanceFromCenter.text =
                     resources.getString(R.string.distance_from_center, distance.toString())
-
-                when (stars) {
-                    1 -> firstStar.visibility = View.VISIBLE
-                    2 -> {
-                        firstStar.visibility = View.VISIBLE
-                        secondStar.visibility = View.VISIBLE
-                    }
-                    3 -> {
-                        firstStar.visibility = View.VISIBLE
-                        secondStar.visibility = View.VISIBLE
-                        thirdStar.visibility = View.VISIBLE
-                    }
-                    4 -> {
-                        firstStar.visibility = View.VISIBLE
-                        secondStar.visibility = View.VISIBLE
-                        thirdStar.visibility = View.VISIBLE
-                        fourthStar.visibility = View.VISIBLE
-                    }
-                    5 -> {
-                        firstStar.visibility = View.VISIBLE
-                        secondStar.visibility = View.VISIBLE
-                        thirdStar.visibility = View.VISIBLE
-                        fourthStar.visibility = View.VISIBLE
-                        fifthStar.visibility = View.VISIBLE
+                for (i in 1..stars) {
+                    when (i) {
+                        1 -> firstStar.visibility = View.VISIBLE
+                        2 -> secondStar.visibility = View.VISIBLE
+                        3 -> thirdStar.visibility = View.VISIBLE
+                        4 -> fourthStar.visibility = View.VISIBLE
+                        5 -> fifthStar.visibility = View.VISIBLE
                     }
                 }
 

@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.myhotels.Injection
 import com.example.myhotels.R
-import com.example.myhotels.databinding.FragmentHotelListBinding
+import com.example.myhotels.databinding.FragmentHotelsBinding
 import com.example.myhotels.domain.model.HotelEntity
 import com.example.myhotels.ui.hotelDetailScreen.HotelDetailFragment
 import com.example.myhotels.ui.hotelsScreen.list.HotelEntityAdapter
@@ -28,23 +28,24 @@ private const val FLAG = 0
 const val REQUEST_KEY_SORT = "request key-sort"
 const val KEY_SORT = "key-sort"
 private const val SORT_HOTELS = "sortHotels"
+private const val NOTHING_FOUND = "Ничего не найдено"
+private const val EMPTY_REQUEST = "Пустой запрос"
 
 class HotelListFragment : Fragment() {
 
     private lateinit var viewModel: HotelViewModel
-    private var _binding: FragmentHotelListBinding? = null
-    private val binding: FragmentHotelListBinding
+    private var _binding: FragmentHotelsBinding? = null
+    private val binding: FragmentHotelsBinding
         get() = _binding ?: throw RuntimeException("FragmentHotelListBinding is null")
 
-    private var chosenSort = DEFAULT_SORT
-
+    private var selectedSort = DEFAULT_SORT
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHotelListBinding.inflate(inflater, container, false)
+        _binding = FragmentHotelsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -53,21 +54,18 @@ class HotelListFragment : Fragment() {
 
         setFragmentResultListener()
         initialToolbar()
+        setOnMenuItemClickListenerForToolbar()
         initViewModel()
         setRecViewItemDecoration()
-
 
         val adapter = context?.let { HotelEntityAdapter() }
         adapter?.onHotelClickListener = object : HotelEntityAdapter.OnHotelClickListener {
             override fun onHotelClick(hotelInfo: HotelEntity) {
-                launchHotelDetailActivity(hotelInfo.id)
+                launchHotelDetailFragment(hotelInfo.id)
             }
         }
         binding.recyclerView.adapter = adapter
         binding.recyclerView.itemAnimator = null
-
-        binding.etSearchHotels.setText(QUERY_FOR_HOTELS)
-
 
         viewModel.hotels.observe(viewLifecycleOwner) {
             binding.progress.isVisible = false
@@ -77,8 +75,8 @@ class HotelListFragment : Fragment() {
 
         binding.etSearchHotels.setOnKeyListener { view, keyCode, event ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                pushRequest()
-                inputMethodManager(view)
+                checkRequestAndGetResponseFromNetwork()
+                hideSoftKey(view)
                 true
             } else {
                 false
@@ -111,12 +109,12 @@ class HotelListFragment : Fragment() {
             REQUEST_KEY_SORT,
             viewLifecycleOwner
         ) { _, bundle ->
-            chosenSort = bundle.getString(KEY_SORT).toString()
-            viewModel.sortHotels(chosenSort)
+            selectedSort = bundle.getString(KEY_SORT).toString()
+            viewModel.sortHotels(selectedSort)
         }
     }
 
-    private fun launchHotelDetailActivity(hotelId: Int) {
+    private fun launchHotelDetailFragment(hotelId: Int) {
         requireActivity().supportFragmentManager.popBackStack()
         requireActivity().supportFragmentManager
             .beginTransaction()
@@ -126,16 +124,20 @@ class HotelListFragment : Fragment() {
     }
 
     private fun initialToolbar() {
-        binding.mainToolbar.inflateMenu(R.menu.first_screen_filter_menu)
-        binding.mainToolbar.setTitle(R.string.find_you_hotel)
+        with(binding) {
+            mainToolbar.inflateMenu(R.menu.first_screen_filter_menu)
+            mainToolbar.setTitle(R.string.find_you_hotel)
+        }
+    }
+
+    private fun setOnMenuItemClickListenerForToolbar() {
         binding.mainToolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.action_filter_hotels -> {
-                    BottomSheetSortFragment.newInstance(chosenSort).show(
+                    BottomSheetSortFragment.newInstance(selectedSort).show(
                         requireActivity().supportFragmentManager,
                         SORT_HOTELS
                     )
-
                     true
                 }
                 else -> false
@@ -143,28 +145,47 @@ class HotelListFragment : Fragment() {
         }
     }
 
-    private fun inputMethodManager(view: View) {
+    private fun hideSoftKey(view: View) {
         val inputMethodManager =
             activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(view.windowToken, FLAG)
     }
 
-    private fun pushRequest() {
-        binding.etSearchHotels.text.trim().let {
+    private fun checkRequestAndGetResponseFromNetwork() {
+        binding.etSearchHotels.text.toString().trim().let {
             if (it.isNotEmpty()) {
                 binding.progress.isVisible = true
                 binding.tvNothingFound.isVisible = false
-                if (it.toString() == QUERY_FOR_HOTELS) {
-                    viewModel.getHotelsDataFromNetwork(it.toString(), chosenSort)
+                if (it == QUERY_FOR_HOTELS) {
+                    getHotelsFromNetwork(it)
                 } else {
-                    viewModel.resetOrder()
-                    Snackbar.make(binding.root, R.string.required_order, Snackbar.LENGTH_SHORT)
-                        .show()
+                    clearAdapter()
+                    showTipNotFound()
                 }
             } else {
-                Snackbar.make(binding.root, R.string.enter_request, Snackbar.LENGTH_SHORT).show()
+                showTipEmptyRequest()
             }
         }
+    }
+
+    private fun getHotelsFromNetwork(request: String) {
+        viewModel.getHotelsDataFromNetwork(request, selectedSort)
+    }
+
+    private fun clearAdapter() {
+        viewModel.resetOrder()
+
+    }
+
+    private fun showTipNotFound() {
+        binding.tvNothingFound.text = NOTHING_FOUND
+        Snackbar.make(binding.root, R.string.required_order, Snackbar.LENGTH_SHORT)
+            .show()
+    }
+
+    private fun showTipEmptyRequest() {
+        binding.tvNothingFound.text = EMPTY_REQUEST
+        Snackbar.make(binding.root, R.string.enter_request, Snackbar.LENGTH_SHORT).show()
     }
 
     private fun initViewModel() {

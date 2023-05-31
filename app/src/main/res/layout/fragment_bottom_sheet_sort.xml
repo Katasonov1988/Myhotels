@@ -3,28 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <TextView
         android:id="@+id/title"
+        style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/tv_sort_padding"
         android:text="@string/sort_by"
-        style="@style/TextAppearance.AppCompat.Title"
-        android:textSize="24sp"
-        android:padding="@dimen/tv_sort_padding" />
+        android:textSize="@dimen/fragment_bottomSheet_textSizeTitle" />
+
     <View
         android:id="@+id/sort_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:padding="@dimen/sort_line_view_padding"
         android:layout_marginStart="@dimen/sort_line_view_margin"
         android:layout_marginEnd="@dimen/sort_line_view_margin"
-        android:background="@color/light_grey" />
+        android:background="@color/light_grey"
+        android:padding="@dimen/sort_line_view_padding" />
+
     <RadioGroup
         android:id="@+id/radioGroup_sort_options"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/radioGroup_padding"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/radioGroup_padding">
 
         <RadioButton
             android:id="@+id/rb_default_sort"

@@ -9,7 +9,7 @@
         android:id="@+id/hotelListFragment"
         android:name="com.example.myhotels.ui.hotelsScreen.HotelListFragment"
         android:label="@string/find_you_hotel"
-        tools:layout="@layout/fragment_hotel_list">
+        tools:layout="@layout/fragment_hotels">
         <action
             android:id="@+id/action_hotelListFragment_to_hotelDetailFragment"
             app:destination="@id/hotelDetailFragment" />
