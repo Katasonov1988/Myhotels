@@ -4,7 +4,6 @@ import com.example.myhotels.data.mapper.HotelMapper
 import com.example.myhotels.data.mapper.toHotelDetailItem
 import com.example.myhotels.data.network.model.HotelData
 import com.example.myhotels.data.network.model.HotelDetailItemData
-import com.example.myhotels.domain.model.HotelDetailItem
 import org.junit.Test
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.Matchers.`is`

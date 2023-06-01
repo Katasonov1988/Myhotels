@@ -22,7 +22,6 @@
         android:contentDescription="@string/book_cover"
         android:paddingStart="@dimen/fragment_hotel_detail_paddingStart"
         android:paddingEnd="@dimen/fragment_hotel_detail_paddingEnd"
-        android:src="@drawable/ic_image_not_supported_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/second_screen_toolbar"
